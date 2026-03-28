@@ -1,6 +1,7 @@
 # Orange Blog Backend
 
 一个基于 Go (Gin) 的博客后端项目，提供完整的博客功能 API，包括文章管理、评论系统、用户认证等功能。
+## 前端项目地址：https://github.com/orangelgj/orange-blog-frontend
 
 # 后端仅提供示例，建议自行根据前端需要的接口实现后端
 
