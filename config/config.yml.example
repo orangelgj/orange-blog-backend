@@ -1,0 +1,17 @@
+app:
+  name:
+  port: :8081
+
+database:
+  dsn: root:your_password@tcp(127.0.0.1:3306)/my_blog_db?charset=utf8mb4&parseTime=True&loc=Local
+  MaxIdleCons: 11
+  MaxOpenCons: 114
+
+jwt:
+  secret: your_jwt_secret_key_here
+
+mail:
+  host: smtp.qq.com
+  port: 587
+  user: your_email@qq.com
+  password: your_email_authorization_code

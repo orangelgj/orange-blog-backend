@@ -1,0 +1,256 @@
+basePath: /api/v1
+host: localhost:8081
+info:
+  contact: {}
+  description: 这是一个个人博客的后端接口
+  title: 橘子的个人博客系统 API
+  version: "1.0"
+paths:
+  /api/v1/article/{id}:
+    get:
+      consumes:
+      - application/json
+      description: 根据文章 ID 获取文章详细信息
+      parameters:
+      - description: 文章 ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 查询成功
+          schema:
+            properties:
+              code:
+                type: integer
+              data:
+                type: object
+              msg:
+                type: string
+            type: object
+        "400":
+          description: ID 格式错误
+          schema:
+            properties:
+              code:
+                type: integer
+              msg:
+                type: string
+            type: object
+        "500":
+          description: 查询失败或文章不存在
+          schema:
+            properties:
+              code:
+                type: integer
+              msg:
+                type: string
+            type: object
+      summary: 获取文章详情
+      tags:
+      - 文章
+  /api/v1/articles:
+    get:
+      consumes:
+      - application/json
+      description: 获取文章列表接口，返回文章列表和总数
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 获取成功
+          schema:
+            properties:
+              code:
+                type: integer
+              data:
+                items:
+                  type: object
+                type: array
+              msg:
+                type: string
+              total:
+                type: integer
+            type: object
+        "500":
+          description: 获取失败
+          schema:
+            properties:
+              code:
+                type: integer
+              data:
+                type: object
+              msg:
+                type: string
+              total:
+                type: integer
+            type: object
+      summary: 获取文章列表
+      tags:
+      - 文章
+  /api/v1/check:
+    get:
+      consumes:
+      - application/json
+      description: 检查用户认证状态，验证 cookie 是否有效
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 认证失败
+          schema:
+            properties:
+              auth:
+                type: boolean
+              message:
+                type: string
+            type: object
+      summary: 检查认证状态
+      tags:
+      - 认证
+  /api/v1/login:
+    post:
+      consumes:
+      - application/json
+      description: 用户登录接口，验证用户名和密码，返回 JWT token
+      parameters:
+      - description: 登录信息
+        in: body
+        name: request
+        required: true
+        schema:
+          properties:
+            password:
+              type: string
+            username:
+              type: string
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 登录成功
+          schema:
+            properties:
+              code:
+                type: integer
+              data:
+                properties:
+                  token:
+                    type: string
+                  user:
+                    type: string
+                type: object
+              msg:
+                type: string
+            type: object
+        "400":
+          description: 参数格式错误
+          schema:
+            properties:
+              code:
+                type: integer
+              msg:
+                type: string
+            type: object
+        "401":
+          description: 用户不存在或密码错误
+          schema:
+            properties:
+              code:
+                type: integer
+              msg:
+                type: string
+            type: object
+        "500":
+          description: Token 生成失败
+          schema:
+            properties:
+              code:
+                type: integer
+              msg:
+                type: string
+            type: object
+      summary: 用户登录
+      tags:
+      - 认证
+  /api/v1/register:
+    post:
+      consumes:
+      - application/json
+      description: 用户注册接口，创建新用户账号
+      parameters:
+      - description: 注册信息
+        in: body
+        name: request
+        required: true
+        schema:
+          properties:
+            password:
+              type: string
+            username:
+              type: string
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 注册成功
+          schema:
+            properties:
+              code:
+                type: integer
+              msg:
+                type: string
+            type: object
+        "400":
+          description: 参数格式错误
+          schema:
+            properties:
+              code:
+                type: integer
+              msg:
+                type: string
+            type: object
+      summary: 用户注册
+      tags:
+      - 认证
+  /api/v1/search:
+    post:
+      consumes:
+      - application/json
+      description: 搜索接口，支持搜索功能
+      parameters:
+      - description: 搜索关键词
+        in: body
+        name: request
+        required: true
+        schema:
+          properties:
+            query:
+              type: string
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 搜索成功
+          schema:
+            properties:
+              message:
+                type: string
+            type: object
+        "400":
+          description: 参数错误
+          schema:
+            properties:
+              error:
+                type: string
+            type: object
+      summary: 搜索接口
+      tags:
+      - 搜索
+swagger: "2.0"
