@@ -2,6 +2,7 @@
 
 一个基于 Go (Gin) 的博客后端项目，提供完整的博客功能 API，包括文章管理、评论系统、用户认证等功能。
 ## 前端项目地址：https://github.com/orangelgj/orange-blog-frontend
+- 该文档基于 AI 生成，可能有误
 
 # 后端仅提供示例，建议自行根据前端需要的接口实现后端
 
@@ -35,14 +36,14 @@
 - **配置管理**: Viper
 - **日志**: logrus
 - **API 文档**: Swagger
-- **限流**: go-redis/redis_rate
+- **限流**: ulule/limiter/v3 (内存存储)
 
 ## 快速开始
 
 ### 环境要求
 - Go >= 1.16
 - MySQL >= 5.7
-- Redis >= 5.0 (用于限流功能)
+
 
 ### 安装依赖
 
