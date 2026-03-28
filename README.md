@@ -4,7 +4,7 @@
 ## 前端项目地址：https://github.com/orangelgj/orange-blog-frontend
 - 该文档基于 AI 生成，可能有误
 
-# 后端仅提供示例，建议自行根据前端需要的接口实现后端
+# 后端仅提供示例，建议自行根据前端需要的接口实现后端,数据库可参考 models 自行设计
 
 ## 功能特性
 
